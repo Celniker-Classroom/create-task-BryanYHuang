@@ -1,13 +1,28 @@
+<!--I am making a to-do-list tool that allows individuals to add and remove items from a checked box. Items will include information about tasks, such as their due dates, extra information (which can be used for typing instructions to complete the task), and the importance level of the tasks. I will also try to add some extra features like making the task turn yellow if near due or red if past due. I can make lists for storing information about each task and a function for clearing information about tasks and/or checking whether or not a task is past due.-->>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>To-Do List</title>
     <script src="script.js" defer></script>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Your html goes here...</h1>
-    <br>See the <a href="README.md">README</a> for project details
+    <h1>To-Do List</h1>
+    <h2>Input Details</h2>
+    <h3>Due Date</h3>
+    <input type="text" id="duedate" placeholder="Type here!">
+    <h3>Extra Details</h3>
+    <input type="text" id="Details" placeholder="Type here!">
+    <h3>Importance Level</h3>
+    <input type="radio" name="Importance" id="l"><label for="e">Low</label>
+    <input type="radio" name="Importance" id="m"><label for="m">Medium</label>
+    <input type="radio" name="Importance" id="h"><label for="h">High</label>
+    <h3>Submit</h3>
+    <button>Click here!</button>
+    <h2>Existing Tasks: </h2>
+    <div id="container">
+    <h3>Tasks will appear here!</h3>
+    </div>
 </body>
 </html>
