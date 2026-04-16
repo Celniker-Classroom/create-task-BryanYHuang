@@ -1,18 +1,23 @@
 //let username = prompt("Enter your name:"); 
 
-const infoArray = ["Information", "Importance", "Due Date"]; 
+let infoArray = ["Information", "Importance", "Due Date"]; 
 document.getElementById("addBtn").addEventListener("click", function(){
     let dueDate = document.getElementById("dueDate").value; 
-    infoArray[0] = dueDate; 
     let details = document.getElementById("details").value; 
-    infoArray[1] = details; 
-    let importance = document.querySelector('input[name="importance"]:checked').value;
-    infoArray[2] = importance;
+    let selectedImportance = document.querySelector('input[name="importance"]:checked').value;
+    let importance = selectedImportance ? selectedImportance : "None"; 
+    infoArray = [dueDate, details, importance]; 
     console.log(infoArray); 
-}); 
 
-// function addInfo(){
-//     infoArray[0] = document.getElementsById("dueDate"); 
-//     infoArray[1] = document.getElementsByName("importance"); 
-//     infoArray[2] = document.getElementsById("details"); 
-// }
+    let container = document.getElementById("container"); 
+    if (container.querySelector("h3")){
+        container.innerHTML = ""; 
+    }
+
+    infoArray.forEach(item => {
+        let taskItem = document.createElement("div");
+        taskItem.classList.add("task-item");
+        taskItem.textContent = item; 
+        container.appendChild(taskItem); 
+    }); 
+}); 
