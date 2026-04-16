@@ -1,23 +1,62 @@
-//let username = prompt("Enter your name:"); 
+let infoArray = ["Information", "Importance", "Due Date"];  
 
-let infoArray = ["Information", "Importance", "Due Date"]; 
 document.getElementById("addBtn").addEventListener("click", function(){
-    let dueDate = document.getElementById("dueDate").value; 
-    let details = document.getElementById("details").value; 
-    let selectedImportance = document.querySelector('input[name="importance"]:checked').value;
-    let importance = selectedImportance ? selectedImportance : "None"; 
-    infoArray = [dueDate, details, importance]; 
-    console.log(infoArray); 
+    let dueDate = document.getElementById("dueDate").value;
+    let details = document.getElementById("details").value;
+    let selectedImportance = document.querySelector('input[name="importance"]:checked');
+    let importance = selectedImportance ? selectedImportance.value : "None";
 
-    let container = document.getElementById("container"); 
-    if (container.querySelector("h3")){
-        container.innerHTML = ""; 
-    }
+    let infoArray = [dueDate, details, importance];
 
-    infoArray.forEach(item => {
+    let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    tasks.push(infoArray);
+
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+
+    displayTasks();
+});
+
+function deleteTask(index) {
+    let tasks = JSON.parse(localStorage.getItem("tasks"));
+    tasks.splice(index, 1);
+    localStorage.setItem("tasks", JSON.stringify(tasks)); 
+    displayTasks(); 
+}
+
+function displayTasks() {
+    let container = document.getElementById("triplecontainer");
+    container.innerHTML = ""; 
+
+    let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+    tasks.forEach((task, index) => {
         let taskItem = document.createElement("div");
         taskItem.classList.add("task-item");
-        taskItem.textContent = item; 
-        container.appendChild(taskItem); 
-    }); 
-}); 
+
+        let dueDateBox = document.createElement("div");
+        dueDateBox.classList.add("task-box");
+        dueDateBox.textContent = task[0]; 
+        taskItem.appendChild(dueDateBox);
+
+        let detailsBox = document.createElement("div");
+        detailsBox.classList.add("task-box");
+        detailsBox.textContent = task[1]; 
+        taskItem.appendChild(detailsBox);
+
+        let importanceBox = document.createElement("div");
+        importanceBox.classList.add("task-box");
+        importanceBox.textContent = task[2]; 
+        taskItem.appendChild(importanceBox);
+
+        let deleteBtn = document.createElement("button");
+        deleteBtn.textContent = "Delete";
+        deleteBtn.addEventListener("click", function () {
+            deleteTask(index); 
+        });
+        taskItem.appendChild(deleteBtn);
+
+        container.appendChild(taskItem);
+    });
+}
+
+displayTasks();
