@@ -1,3 +1,4 @@
+//I used AI to help debug my code. 
 let infoArray = ["Information", "Importance", "Due Date"];  
 
 document.getElementById("addBtn").addEventListener("click", function(){
@@ -5,6 +6,12 @@ document.getElementById("addBtn").addEventListener("click", function(){
     let details = document.getElementById("details").value;
     let selectedImportance = document.querySelector('input[name="importance"]:checked');
     let importance = selectedImportance ? selectedImportance.value : "None";
+
+    if (dueDate === "" || details === ""){
+        alert("Please fill in all the required fields.");
+        document.getElementById("addBtn").disabled = false;
+        return; 
+    }
 
     let infoArray = [dueDate, details, importance];
 
@@ -16,14 +23,14 @@ document.getElementById("addBtn").addEventListener("click", function(){
     displayTasks();
 });
 
-function deleteTask(index) {
+function deleteTask(index){
     let tasks = JSON.parse(localStorage.getItem("tasks"));
     tasks.splice(index, 1);
     localStorage.setItem("tasks", JSON.stringify(tasks)); 
     displayTasks(); 
 }
 
-function displayTasks() {
+function displayTasks(){
     let container = document.getElementById("triplecontainer");
     container.innerHTML = ""; 
 
@@ -50,7 +57,7 @@ function displayTasks() {
 
         let deleteBtn = document.createElement("button");
         deleteBtn.textContent = "Delete";
-        deleteBtn.addEventListener("click", function () {
+        deleteBtn.addEventListener("click", function (){
             deleteTask(index); 
         });
         taskItem.appendChild(deleteBtn);
