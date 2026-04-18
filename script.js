@@ -1,6 +1,4 @@
 //I used AI to help debug my code, and it suggested lines 11 and 41. 
-let infoArray = [];  
-
 function btnClick(taskArray){
     let dueDate = taskArray[0];
     let details = taskArray[1];
