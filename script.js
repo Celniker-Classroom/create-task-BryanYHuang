@@ -1,7 +1,8 @@
-//I used AI to help debug my code, and it suggested lines 11 and 41. 
-function btnClick(taskArray){
-    let dueDate = taskArray[0];
-    let details = taskArray[1];
+let infoArray = [];  
+
+function btnClick(){
+    let dueDate = infoArray[0];
+    let details = infoArray[1];
 
     if (dueDate === "" || details === ""){
         alert("Please fill in all the required fields.");
@@ -12,7 +13,7 @@ function btnClick(taskArray){
     }
 
     let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-    tasks.push(taskArray);
+    tasks.push(infoArray);
 
     localStorage.setItem("tasks", JSON.stringify(tasks));
 
@@ -25,8 +26,8 @@ document.getElementById("addBtn").addEventListener("click", function(){
     let selectedImportance = document.querySelector('input[name="importance"]:checked');
     let importance = selectedImportance ? selectedImportance.value : "None";
 
-    let infoArray = [dueDate, details, importance]; 
-    btnClick(infoArray);
+    infoArray = [dueDate, details, importance]; 
+    btnClick();
 });
 
 function deleteTask(index){
