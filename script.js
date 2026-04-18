@@ -1,5 +1,25 @@
-//I used AI to help debug my code. 
-let infoArray = ["Information", "Importance", "Due Date"];  
+//I used AI to help debug my code, and it suggested lines 11 and 41. 
+let infoArray = [];  
+
+function btnClick(taskArray){
+    let dueDate = taskArray[0];
+    let details = taskArray[1];
+
+    if (dueDate === "" || details === ""){
+        alert("Please fill in all the required fields.");
+        return; 
+    }
+    else{
+        alert("Task added successfully!");
+    }
+
+    let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    tasks.push(taskArray);
+
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+
+    displayTasks();
+}
 
 document.getElementById("addBtn").addEventListener("click", function(){
     let dueDate = document.getElementById("dueDate").value;
@@ -7,20 +27,8 @@ document.getElementById("addBtn").addEventListener("click", function(){
     let selectedImportance = document.querySelector('input[name="importance"]:checked');
     let importance = selectedImportance ? selectedImportance.value : "None";
 
-    if (dueDate === "" || details === ""){
-        alert("Please fill in all the required fields.");
-        document.getElementById("addBtn").disabled = false;
-        return; 
-    }
-
-    let infoArray = [dueDate, details, importance];
-
-    let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-    tasks.push(infoArray);
-
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-
-    displayTasks();
+    let infoArray = [dueDate, details, importance]; 
+    btnClick(infoArray);
 });
 
 function deleteTask(index){
