@@ -1,4 +1,4 @@
-//I used AI to help debug my code, and it suggested lines 14 and 43. 
+//I used AI to help debug my code, and it suggested line 43. 
 function btnClick(){
     let dueDate = infoArray[0];
     let details = infoArray[1];
