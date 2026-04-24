@@ -1,14 +1,38 @@
-//I used AI to help debug my code, and it suggested line 43. 
+//I used AI to help debug my code, and it suggested the line with jquery. 
+function updateTimer(){
+    let now = new Date(); 
+
+    now.getFullYear(); 
+    now.getMonth(); 
+    now.getDate(); 
+    now.getDay(); 
+    now.getHours(); 
+    now.getMinutes(); 
+    now.getSeconds(); 
+    now.getTime(); 
+
+    let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    let dayName = days[now.getDay()];
+
+    let myDate = document.getElementById("myDate"); 
+    myDate.textContent = `${dayName}, ${now.getMonth() + 1}/${now.getDate()}/${now.getFullYear()} ${now.getHours()}:${now.getMinutes()}:${now.getSeconds().toString().padStart(2, '0')}`;
+}
+
+setInterval(updateTimer, 1000); 
+updateTimer(); 
+
+document.getElementById("existingTasks").textContent = "Added Tasks Will Appear Below";
+
 function btnClick(){
     let dueDate = infoArray[0];
     let details = infoArray[1];
-
+    
     if (dueDate === "" || details === ""){
         alert("Please fill in all the required fields.");
         return; 
     }
     else{
-        alert("Task added successfully!");
+        document.getElementById("existingTasks").textContent = "Existing Tasks: ";
     }
 
     let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
