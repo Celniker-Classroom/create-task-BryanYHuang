@@ -1,4 +1,4 @@
-//I used AI to help debug my code, and it suggested the line with jquery. 
+//I used AI to help debug my code, and it suggested the last line with jQuery. 
 function updateTimer(){
     let now = new Date(); 
 
@@ -70,19 +70,19 @@ function displayTasks(){
         let taskItem = document.createElement("div");
         taskItem.classList.add("task-item");
 
-    let dueDateBox = document.createElement("div");
-    dueDateBox.classList.add("task-box");
+        let dueDateBox = document.createElement("div");
+        dueDateBox.classList.add("task-box");
 
-    let dueDateValue = new Date(task[0]); 
-    let now = new Date();
+        let dueDateValue = new Date(task[0]); 
+        let now = new Date();
 
-    dueDateBox.textContent = task[0];
+        dueDateBox.textContent = task[0];
 
-    if (!isNaN(dueDateValue) && dueDateValue < now) {
-        dueDateBox.classList.add("overdue");
-    }
+        if (!isNaN(dueDateValue) && dueDateValue < now) {
+            dueDateBox.classList.add("overdue");
+        }
 
-    taskItem.appendChild(dueDateBox);
+        taskItem.appendChild(dueDateBox);
 
         let detailsBox = document.createElement("div");
         detailsBox.classList.add("task-box");
