@@ -63,7 +63,7 @@ h3{
     display: flex; 
     flex-direction: column;
 }
-
+/* Task item styles */
 .task-item{
     border: 1px solid rgb(210, 155, 0); 
     padding: 10px; 
@@ -85,6 +85,7 @@ h3{
     width: 1000px; 
 }
 
+/* Button styles */
 button{
     background-color: rgb(210, 155, 0); 
     color: rgb(255, 255, 255); 
@@ -97,6 +98,7 @@ button:hover{
     color: rgb(210, 155, 0); 
 }
 
+/* Allows for the overdue tasks to be highlighted in red and bold for better visibility. */
 .overdue {
     color: red;
     font-weight: bold;
